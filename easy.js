@@ -31,8 +31,43 @@ var assert = require("assert")
 // Explanation: Empty array...
 
 const altNumbers = (numArray) => {
-    // TODO: COMPLETE THIS FUNCTION
-    return [];
+
+    // Filter the given array into an array of positive numbers and an array of
+    // negative numbers. 
+    const positiveArray = numArray.filter(x => x >= 0);
+    const negativeArray = numArray.filter(x => x < 0);
+
+    // Create an empty array to store the alternating numbers.
+    const alternatingArray = []
+
+    // If there are more positive numbers than negative numbers, then start
+    // the alternating array with a positive number. 
+    if (positiveArray.length > negativeArray.length) {
+        alternatingArray.push(positiveArray[0]);
+        positiveArray.shift();
+        for (let i = 0; i < positiveArray.length; i++) {
+            alternatingArray.push(negativeArray[i]);
+            alternatingArray.push(positiveArray[i]);
+        }
+    } else if (positiveArray.length < negativeArray.length) {
+        // If there are more negative numbers than positive numbers, then start
+        // the alternating array with a negative number.
+        alternatingArray.push(negativeArray[0]);
+        negativeArray.shift();
+        for (let i = 0; i < positiveArray.length; i++) {
+            alternatingArray.push(positiveArray[i]);
+            alternatingArray.push(negativeArray[i]);
+        }
+    } else {
+        // If there is an equal number of positive and negative numbers then
+        // alternate them in any way.
+        for (let i = 0; i < positiveArray.length; i++) {
+            alternatingArray.push(positiveArray[i]);
+            alternatingArray.push(negativeArray[i]);
+        }
+    }
+
+    return alternatingArray;
 }
 
 module.exports = { altNumbers } // Do not modify this line
