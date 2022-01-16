@@ -60,8 +60,9 @@ const altNumbers = (numArray) => {
 }
 
 function arrangeArrays(alternatingArray, firstArray, secondArray) {
-    // First array has its value at the index inserted first.
-    // Second array has its value at the index inserted second.
+    // Both arrays should have the same length as the number of positive and 
+    // negative numbers will not differ by more than 1 and the extra value
+    // has been .shift().
     for (let i = 0; i < firstArray.length; i++) {
         alternatingArray.push(firstArray[i]);
         alternatingArray.push(secondArray[i]);
